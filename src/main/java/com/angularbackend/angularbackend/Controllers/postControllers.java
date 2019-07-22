@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 public class postControllers {
 
@@ -17,6 +19,12 @@ public class postControllers {
     @GetMapping("getAllPosts")
     public Iterable<post> getAllPost(){
         return postRepo.findAll();
+    }
+
+    @CrossOrigin
+    @GetMapping("getOnePost")
+    public Optional<post> getOnePost(){
+        return postRepo.findById((long) 2);
     }
 
 }
